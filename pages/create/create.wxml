@@ -1,0 +1,36 @@
+<!-- <block wx:if="{{true}}"> -->
+<view style='background-color: #f0f0f0'>
+  <form catchsubmit="formSubmit" catchreset="formReset">
+    <!-- 填写待办内容区域 -->
+    <view class="weui-cells__title">待办内容</view>
+    <view class="weui-cells weui-cells_after-title">
+      <label class="weui-cell">
+        <view class="weui-cell__bd">
+          <textarea class="weui-textarea" name="content" value="{{content}}" placeholder="在这里新增..." auto-focus='true' />
+        </view>
+      </label>
+    </view>
+
+    <!-- 选择标签区域 -->
+    <view class="weui-cells__title">标签</view>
+    <view class="weui-cells weui-cells_after-title">
+      <checkbox-group name="tags" bindchange="checkboxChange">
+        <label class="weui-cell weui-check__label" wx:for="{{tags}}" wx:key="id">
+          <checkbox class="weui-check" value="{{item.id}}" checked="{{item.checked}}" />
+
+          <view class="weui-cell__hd weui-check__hd_in-checkbox">
+            <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.checked}}"></icon>
+            <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.checked}}"></icon>
+          </view>
+          <view class="weui-cell__bd">{{item.name}}</view>
+        </label>
+      </checkbox-group>
+    </view>
+
+    <!-- 提交按钮区域 -->
+    <view class="weui-btn-area">
+      <button class="weui-btn" type="primary" form-type='submit'>添加</button>
+    </view>
+  </form>
+</view>
+<!-- </block> -->

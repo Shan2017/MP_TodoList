@@ -1,0 +1,4 @@
+<view class="container">
+  <view> 您还未登录，请先登录</view>
+  <button type="primary" size="default" open-type="getUserInfo" bindgetuserinfo="login">微信登录</button>
+</view>
