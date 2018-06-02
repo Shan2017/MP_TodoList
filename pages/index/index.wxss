@@ -1,21 +1,48 @@
 /**index.wxss**/
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+
+.filter {
+  display: inline;
+  position: fixed;
+  width: 100%;
+  height: 70rpx;
+  background-color: #a0cad8;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
 }
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.filter_left, .filter_right {
+  display: inline;
+  float: left;
+  width: 50%;
+  height: 70rpx;
 }
 
-.userinfo-nickname {
-  color: #aaa;
+.filter_label {
+  display: inline;
+  float: left;
+  width: 30%;
+  font-size: 12px;
+  padding: 20rpx 10rpx 20rpx 20rpx;
 }
 
-.usermotto {
-  margin-top: 200px;
+.filter_memu {
+  display: inline;
+  float: left;
+  position: absolute;
+  top:10rpx;
+  width: 50%;
+  height: 200rpx;
+  overflow: hidden;
+  padding: 10rpx 0rpx 10rpx 0rpx;
+}
+
+.filter_pulldown {
+  display: inline;
+  float: left;
+  width: 10px;
+  height: 10px;
+  margin: 30rpx auto 30rpx 10rpx;
+  padding: auto;
 }

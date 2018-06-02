@@ -1,41 +1,67 @@
 <view class="page">
   <view class="page__bd">
-    <view class="weui-panel weui-panel_access">
-      <!-- <view class="weui-panel__hd">文字组合列表</view>     -->
+    <!-- 有待办列表的情况 -->
+    <view wx:if="{{todos.length > 0}}" class="weui-panel weui-panel_access">
+      <!-- <view class="weui-panel__hd">文字组合列表</view> -->
 
-      <view>
-        <!-- 待办列表 -->
-        <view class="weui-cells">
-          <block wx:for="{{todos}}">
-            <!-- 每个列表项 -->
-            <view class="weui-cell">
-              <!-- 左边区域 -->
-              <view class="weui-cell__bd">
-                <navigator url="../show/show?id={{item.id}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <!-- 筛选栏 -->
+      <view class="filter">
+        <view bindtap="choose_status" class="filter_left">
+          <view class="filter_label">完成状态</view>
+          <view class="filter_memu">
+            abcdefghijklmnopqrstuvwxyz123456
+            
+          </view>
+          <image class="filter_pulldown" src='/images/pull_down.png'></image>
+        </view>
 
-                  <view class="weui-media-box weui-media-box_text">
-                    <view class="weui-media-box__title weui-media-box__title_in-text">{{item.content}}</view>
-                    <view class="weui-media-box__desc">{{item.tags}}</view>
-                  </view>
-                </navigator>
-              </view>
-
-              <!-- 右边区域 -->
-              <view class="weui-cell__ft">
-                <switch checked="{{item.finished}}" id="{{item.id}}" bindchange="switch2Change" />
-              </view>
-            </view>
-          </block>
+        <view bindtap="choose_tag" class="filter_right">
+          <view class="filter_label">标签</view>
+          <view class="filter_memu">
+            abcdefghijklmnopqrstuvwxyz123456
+          </view>
+          <image class="filter_pulldown" src='/images/pull_down.png'></image>
         </view>
       </view>
 
+      <!-- 待办列表 -->
+      <view class="weui-cells">
+        <block wx:for="{{todos}}">
+          <!-- 每个列表项 -->
+          <view class="weui-cell">
+            <!-- 左边区域 -->
+            <view class="weui-cell__bd">
+              <navigator url="../show/show?id={{item.id}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+
+                <view class="weui-media-box weui-media-box_text">
+                  <view class="weui-media-box__title weui-media-box__title_in-text">{{item.content}}</view>
+                  <view class="weui-media-box__desc">{{item.tags}}</view>
+                </view>
+              </navigator>
+            </view>
+
+            <!-- 右边区域 -->
+            <view class="weui-cell__ft">
+              <switch checked="{{item.finished}}" id="{{item.id}}" bindchange="switch2Change" />
+            </view>
+          </view>
+        </block>
+      </view>
+
+      <!-- 底部加载更多 -->
       <view class="weui-loadmore" hidden='{{hideLoadMore}}'>
         <view class="weui-loading"></view>
         <view class="weui-loadmore__tips">加载更多</view>
       </view>
       <view class="weui-loadmore weui-loadmore_line" hidden='{{!hideLoadMore}}'>
-        <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
+        <view class="weui-loadmore__tips weui-loadmore__tips_in-line">没有更多</view>
       </view>
+    </view>
+
+    <!-- 待办列表为空的情况 -->
+    <view wx:else class="container">
+      <view class="weui-cells__tips">这里空空如也</view>
+      <navigator url="/pages/create/create" open-type="switchTab" class="weui-cell_link">去新增</navigator>
     </view>
   </view>
 </view>

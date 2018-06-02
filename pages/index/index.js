@@ -6,10 +6,13 @@ Page({
   data: {
     token: app.globalData.token,
     todos: [],
-    hideLoadMore: true
+    hideLoadMore: true,
+    choose_tag: '',
+    choose_status: ''
   },
   //事件处理函数
   onReady: function () {
+    console.log(app.globalData.token)
     this.loadingList()
   },
   loadingList: function () {
@@ -181,5 +184,27 @@ Page({
     })
 
     this.loadingMore()
+  },
+  choose_status: function () {
+    wx.showActionSheet({
+      itemList: ['所有', '已完成', '待完成'],
+      success: function (res) {
+        console.log(res.tapIndex)
+      },
+      fail: function (res) {
+        console.log(res.errMsg)
+      }
+    })
+  },
+  choose_tag: function () {
+    wx.showActionSheet({
+      itemList: ['所有', 'tag1', 'taga2'],
+      success: function (res) {
+        console.log(res.tapIndex)
+      },
+      fail: function (res) {
+        console.log(res.errMsg)
+      }
+    })
   }
 })
